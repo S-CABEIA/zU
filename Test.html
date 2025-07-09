@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALENTO+ - Contratação Inteligente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6d28d9;
+            --primary-dark: #5b21b6;
+            --primary-light: #ede9fe;
+            --secondary: #10b981;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --gradient: linear-gradient(135deg, #7e22ce, #4f46e5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .gradient-bg {
+            background: var(--gradient);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(109, 40, 217, 0.3);
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background-color: var(--light-gray);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-green {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-green:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .hero-card {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+        }
+
+        .candidate-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .candidate-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .match-badge {
+            background: var(--secondary);
+            color: #064e3b;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .progress-tech {
+            width: 85%;
+            background: var(--secondary);
+        }
+
+        .progress-health {
+            width: 90%;
+            background: #3b82f6;
+        }
+
+        /* Features */
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--light);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: var(--primary-light);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            color: var(--primary);
+        }
+
+        .feature-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-desc {
+            color: var(--gray);
+        }
+
+        /* Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        /* Target */
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .target-card {
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .target-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .target-card-1 {
+            background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+            border: 1px solid #c7d2fe;
+        }
+
+        .target-card-2 {
+            background: linear-gradient(135deg, #d1fae5, #d5f5f3);
+            border: 1px solid #a7f3d0;
+        }
+
+        .target-card-3 {
+            background: linear-gradient(135deg, #ede9fe, #f5f3ff);
+            border: 1px solid #ddd6fe;
+        }
+
+        .target-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--gray);
+            font-size: 18px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .pricing-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .pricing-price {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .pricing-period {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .pricing-features .premium {
+            color: var(--primary);
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-about {
+            color: #9ca3af;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-info {
+            list-style: none;
+            color: #9ca3af;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            width: 20px;
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-card {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 140px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-brain"></i>
+                    TALENTO+
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#beneficios">Benefícios</a></li>
+                    <li><a href="#como-funciona">Como Funciona</a></li>
+                    <li><a href="#planos">Planos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Entrar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero gradient-bg">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Contrate talentos com inteligência, saúde e atitude certa.</h1>
+                    <p>A plataforma angolana que avalia competências, mentalidade e saúde emocional para empresas formarem equipes mais produtivas.</p>
+                    <a href="#" class="btn btn-white">
+                        <i class="fas fa-check-circle"></i> Teste Gratuitamente
+                    </a>
+                </div>
+                <div class="hero-card">
+                    <div class="candidate-card">
+                        <div class="candidate-header">
+                            <span>Candidato: João Silva</span>
+                            <span class="match-badge">92% Match</span>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Competências Técnicas</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-tech"></div>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-label">
+                                <span>Saúde Emocional</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill progress-health"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center" style="color: rgba(255, 255, 255, 0.8);">
+                        <i class="fas fa-chart-bar"></i> Relatório Completo Disponível
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="section" id="beneficios">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Por que escolher o TALENTO+?</h2>
+                <p class="section-subtitle">Descubra como nossa plataforma transforma o processo de recrutamento e seleção</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">Pré-entrevistas Automatizadas</h3>
+                    <p class="feature-desc">Entrevistas inteligentes que economizam seu tempo e identificam os melhores candidatos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="feature-title">Avaliação Psicológica</h3>
+                    <p class="feature-desc">Análise completa de saúde emocional e perfil psicológico inclusa em cada avaliação.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="feature-title">Relatórios Claros</h3>
+                    <p class="feature-desc">Pontos fortes e áreas de desenvolvimento apresentados de forma simples e objetiva.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="feature-title">Cultura Alinhada</h3>
+                    <p class="feature-desc">Equipes que se encaixam perfeitamente com sua cultura e propósito empresarial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="section bg-gray" id="como-funciona">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Um processo simples em 4 passos</h2>
+                <p class="section-subtitle">Descubra como é fácil encontrar o talento perfeito para sua empresa</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Cadastre a Vaga</h3>
+                    <p>A empresa cadastra a vaga com todos os requisitos necessários.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Testes Inteligentes</h3>
+                    <p>O candidato realiza os testes inteligentes de forma rápida e eficiente.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>IA Gera Relatórios</h3>
+                    <p>A IA gera relatórios completos e detalhados para sua análise.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Decisão Confiante</h3>
+                    <p>Você decide com confiança e dados quem contratar.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-primary">Quero conhecer agora!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para Quem -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Perfeito para</h2>
+                <p class="section-subtitle">Seja qual for o tamanho da sua empresa, temos a solução ideal</p>
+            </div>
+            <div class="target-grid">
+                <div class="target-card target-card-1">
+                    <div class="target-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>PMEs</h3>
+                    <p>Pequenas e médias empresas sem RH estruturado que precisam contratar com segurança.</p>
+                </div>
+                <div class="target-card target-card-2">
+                    <div class="target-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Grandes Empresas</h3>
+                    <p>Corporações que querem reduzir rotatividade e melhorar a qualidade das contratações.</p>
+                </div>
+                <div class="target-card target-card-3">
+                    <div class="target-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Candidatos</h3>
+                    <p>Profissionais que querem entender seus próprios pontos fortes e se destacar no mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section bg-gray">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">O que dizem nossos clientes</h2>
+                <p class="section-subtitle">Histórias reais de empresas que transformaram seu processo de recrutamento</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <p class="testimonial-text">"Hoje só contratamos com base nos relatórios do TALENTO+. Nosso turnover caiu pela metade em 6 meses!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">HR</div>
+                        <div class="author-info">
+                            <h4>HR Manager</h4>
+                            <p>Empresa X</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <p class="testimonial-text">"Finalmente uma solução local que entende as pessoas e as empresas de Angola!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CEO</div>
+                        <div class="author-info">
+                            <h4>CEO</h4>
+                            <p>Startup Y</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planos -->
+    <section class="section" id="planos">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Planos acessíveis para sua necessidade</h2>
+                <p class="section-subtitle">Escolha o plano que melhor se adapta ao seu negócio</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="pricing-title">PME</h3>
+                    <div class="pricing-price">XX Kz</div>
+                    <div class="pricing-period">/mês</div>
+                    <p>Até 20 candidatos por mês</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Pré-entrevistas automatizadas</li>
+                        <li><i class="fas fa-check"></i> Avaliação psicológica básica</li>
+                        <li><i class="fas fa-check"></i> Relatórios simplificados</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Escolher Plano</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="popular-badge">Mais Popular</div>
+                    <h3 class="pricing-title">Corporativo</h3>
+                    <div class="pricing-price">Sob consulta</div>
+                    <div class="pricing-period">Personalizado</div>
+                    <p>Candidatos ilimitados</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Tudo do plano PME</li>
+                        <li><i class="fas fa-check"></i> Avaliação psicológica completa</li>
+                        <li><i class="fas fa-check"></i> Relatórios detalhados</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Falar com Consultor</a>
+                </div>
+                <div class="pricing-card">
+                    <h3 class="pricing-title">Candidatos</h3>
+                    <div class="pricing-price">Gratuito</div>
+                    <div class="pricing-period">Com versão premium</div>
+                    <p>Perfil básico gratuito</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Perfil básico gratuito</li>
+                        <li><i class="fas fa-check"></i> Testes de competência</li>
+                        <li><i class="fas fa-star premium"></i> Relatório completo (premium)</li>
+                        <li><i class="fas fa-star premium"></i> Coaching personalizado (premium)</li>
+                    </ul>
+                    <a href="#" class="btn btn-green">Começar Grátis</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="btn btn-dark">Ver todos os planos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta gradient-bg">
+        <div class="container">
+            <h2>Comece a contratar melhor hoje mesmo.</h2>
+            <a href="#" class="btn btn-white btn-large">
+                <i class="fas fa-check-circle"></i> Cadastre sua empresa agora
+            </a>
+            <div class="mt-8" style="color: rgba(255, 255, 255, 0.9);">
+                Ou fale com nosso consultor: 
+                <a href="https://wa.me/244900000000" style="color: white; text-decoration: underline;">WhatsApp</a> / 
+                <a href="mailto:contato@talentomais.ao" style="color: white; text-decoration: underline;">contato@talentomais.ao</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">TALENTO+</div>
+                    <p class="footer-about">Recrutamento inteligente para equipes fortes e saudáveis.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-title">Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Termos de uso</a></li>
+                        <li><a href="#">Política de privacidade</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Suporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contato</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-envelope"></i> contato@talentomais.ao</li>
+                        <li><i class="fas fa-phone"></i> +244 900 000 000</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Luanda, Angola</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TALENTO+ ANGOLA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Adicionar classe ativa ao menu quando rolado
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
